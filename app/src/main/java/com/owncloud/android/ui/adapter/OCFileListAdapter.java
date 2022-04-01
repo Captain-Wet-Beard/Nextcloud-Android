@@ -128,6 +128,7 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private final ThemeColorUtils themeColorUtils;
     private final ThemeDrawableUtils themeDrawableUtils;
     private final ThemeAvatarUtils themeAvatarUtils;
+    private SearchType searchType;
 
     public OCFileListAdapter(
         Activity activity,
@@ -639,6 +640,8 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mFilesAll.clear();
         }
 
+        searchType = null;
+
         notifyDataSetChanged();
     }
 
@@ -700,6 +703,8 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             sortOrder = preferences.getSortOrderByFolder(folder);
             mFiles = sortOrder.sortCloudFiles(mFiles);
         }
+
+        this.searchType = searchType;
 
         mFilesAll.clear();
         mFilesAll.addAll(mFiles);
